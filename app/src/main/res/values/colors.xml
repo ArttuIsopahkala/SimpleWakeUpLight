@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="color_sun" type="color">#d56138</item>
+    <item name="color_main" type="color">#4397f7</item>
+    <item name="color_menu" type="color">#083a79</item>
+    <item name="color_button" type="color">#242424</item>
+    <item name="color_item_pressed" type="color">#242424</item>
+    <item name="color_text_light" type="color">#F4F4F4</item>
+    <item name="color_text_light_secondary" type="color">#FFD6D6D6</item>
+    <item name="color_text_light_third" type="color">#9e9e9e</item>
+    <item name="color_text_hint" type="color">#c88e8e8e</item>
+    <item name="color_shadow" type="color">#333333</item>
+    <item name="color_text_black" type="color">#0d0d0d</item>
+    <item name="color_link" type="color">#05C5CF</item>
+    <item name="color_active" type="color">#06a6a6</item>
+    <item name="color_text_background" type="color">#64f4f4f4</item>
+    <item name="color_widget_background" type="color">#32000000</item>
+</resources>

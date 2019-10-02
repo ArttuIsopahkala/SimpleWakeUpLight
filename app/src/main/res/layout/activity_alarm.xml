@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    tools:context=".AlarmActivity"
+    android:background="@color/color_sun"
+    android:orientation="vertical"
+    android:id="@+id/alarmContent">
+
+    <TextView
+        android:id="@+id/brightnessLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alarm_brightness_level"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:background="@color/color_text_background"/>
+
+    <TextView
+        android:id="@+id/brightnessLevelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/brightnessLevel"
+        android:text="80%"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:background="@color/color_text_background"/>
+
+    <TextView
+        android:id="@+id/timeToAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/alarm_time_to_alarm"
+        android:layout_below="@+id/brightnessLevelText"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:background="@color/color_text_background"/>
+
+    <TextView
+        android:id="@+id/timeToAlarmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeToAlarm"
+        android:layout_centerHorizontal="true"
+        android:text="00:50"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:background="@color/color_text_background"/>
+
+    <TextView
+        android:id="@+id/stopAlarmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/alarm_close_light"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:background="@color/color_text_background"/>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="LARGE_BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+</RelativeLayout>

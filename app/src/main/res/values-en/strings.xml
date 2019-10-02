@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple Wake-Up Light</string>
+
+    <string name="dd">dd</string>
+    <string name="mm">mm</string>
+    <string name="yyyy">yyyy</string>
+    <string name="ready">Ready</string>
+    <string name="monday">on Monday</string>
+    <string name="tuesday">on Tuesday</string>
+    <string name="wednesday">on Wednesday</string>
+    <string name="thursday">on Thursday</string>
+    <string name="friday">on Friday</string>
+    <string name="saturday">on Saturday</string>
+    <string name="sunday">on Sunday</string>
+    <string name="clock">at</string>
+    <string name="today">today</string>
+    <string name="tomorrow">tomorrow</string>
+    <string name="monday_attr">M</string>
+    <string name="sunday_attr">S</string>
+    <string name="saturday_attr">S</string>
+    <string name="friday_attr">F</string>
+    <string name="thursday_attr">T</string>
+    <string name="wednesday_attr">W</string>
+    <string name="tuesday_attr">T</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="info">Info</string>
+    <string name="day">day</string>
+    <string name="days">days</string>
+    <string name="hour">hour</string>
+    <string name="hours">hours</string>
+    <string name="minute">minute</string>
+    <string name="minutes">minutes</string>
+    <string name="and">and</string>
+
+    <string name="main_alarm_info">Wake-up light works with your device\'s alarm clock. It first starts dim and brightens up until alarm. You can choose the color and duration for the wake-up light.</string>
+    <string name="main_widget_info">A widget is available for this application.</string>
+    <string name="main_no_alarm_detected">Alarm clock is not set</string>
+    <string name="main_alarm_saved_later">Wake-up light automatically resets when your alarm clock is timed next time.</string>
+    <string name="main_next_wakeup_light">Wake-up light starts</string>
+    <string name="main_wakeup_light_not_set">Wake-up light is not in use</string>
+    <string name="main_next_alarm">Alarm %1$s</string>
+    <string name="main_next_alarm_manual">Wake-up time %1$s</string>
+    <string name="main_alarm_use">Use wake-up light</string>
+    <string name="main_before_alarm">The duration of wake-up light</string>
+    <string name="main_test_alarm">Test wake-up light</string>
+    <string name="main_info_icon_desc">Info</string>
+    <string name="main_alarm_manually_use">Timetable</string>
+    <string name="main_alarm_manually_set">Schedule</string>
+    <string name="main_alarm_automatic">Alarm clock</string>
+    <string name="main_alarm_manual">Manual</string>
+    <string name="main_alarm_speed">Speed of brightness</string>
+
+    <string name="schedule_description">Set a wake up time</string>
+    <string name="schedule_info">(Does not affect your device\'s alarm clock)</string>
+
+    <string name="widget_on_message">until wake-up light starts.</string>
+
+    <string name="alarm_brightness_level">Brightness</string>
+    <string name="alarm_time_to_alarm">Time before alarm</string>
+    <string name="alarm_close_light">Tap to close</string>
+
+    <string name="info_link_rate">Rate app</string>
+    <string name="info_link_more">More apps</string>
+    <string name="info_version">Version: %1$s</string>
+    <string name="info_copyright">Copyright &#169; Arde Apps</string>
+    <string name="info_close">Close</string>
+    <string name="info_title">Simple Wake-Up Light - info</string>
+</resources>

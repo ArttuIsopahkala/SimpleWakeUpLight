@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Herätysvalo</string>
+
+    <string name="dd">pp</string>
+    <string name="mm">kk</string>
+    <string name="yyyy">vvvv</string>
+    <string name="ready">Valmis</string>
+    <string name="monday">maanantaina</string>
+    <string name="tuesday">tiistaina</string>
+    <string name="wednesday">keskiviikkona</string>
+    <string name="thursday">torstaina</string>
+    <string name="friday">perjantaina</string>
+    <string name="saturday">lauantaina</string>
+    <string name="sunday">sunnuntaina</string>
+    <string name="clock">kello</string>
+    <string name="today">tänään</string>
+    <string name="tomorrow">huomenna</string>
+    <string name="tuesday_attr">T</string>
+    <string name="monday_attr">M</string>
+    <string name="wednesday_attr">K</string>
+    <string name="thursday_attr">T</string>
+    <string name="friday_attr">P</string>
+    <string name="saturday_attr">L</string>
+    <string name="sunday_attr">S</string>
+    <string name="cancel">Peruuta</string>
+    <string name="save">Tallenna</string>
+    <string name="info">Tietoja</string>
+    <string name="day">päivä</string>
+    <string name="days">päivää</string>
+    <string name="hour">tunti</string>
+    <string name="hours">tuntia</string>
+    <string name="minute">minuutti</string>
+    <string name="minutes">minuuttia</string>
+    <string name="and">ja</string>
+
+    <string name="main_alarm_info">Herätysvalo toimii yhteistyössä laitteesi herätyskellon kanssa. Se käynnistyy ensin himmeänä ja kirkastuu aina herätykseen asti. Voit valita herätysvalolle värin ja keston.</string>
+    <string name="main_widget_info">Sovelluksesta on saatavilla pienoisohjelma.</string>
+    <string name="main_no_alarm_detected">Herätystä ei ole ajastettu</string>
+    <string name="main_alarm_saved_later">Herätysvalo asettuu automaattisesti, kun herätyskello ajastetaan seuraavan kerran.</string>
+    <string name="main_next_wakeup_light">Herätysvalo käynnistyy</string>
+    <string name="main_wakeup_light_not_set">Herätysvalo ei ole käytössä</string>
+    <string name="main_next_alarm">Herätys %1$s</string>
+    <string name="main_next_alarm_manual">Herätysaika %1$s</string>
+    <string name="main_alarm_use">Käytä herätysvaloa</string>
+    <string name="main_before_alarm">Herätysvalon kesto</string>
+    <string name="main_test_alarm">Testaa herätysvaloa</string>
+    <string name="main_info_icon_desc">Info</string>
+    <string name="main_alarm_manually_use">Aikataulu</string>
+    <string name="main_alarm_manually_set">Ajasta</string>
+    <string name="main_alarm_automatic">Herätyskello</string>
+    <string name="main_alarm_manual">Manuaalinen</string>
+    <string name="main_alarm_speed">Kirkastumisen nopeus</string>
+
+    <string name="schedule_description">Aseta herätysaika</string>
+    <string name="schedule_info">(Ei vaikuta laitteesi herätyskelloon)</string>
+
+    <string name="widget_on_message">herätysvalon käynnistykseen.</string>
+
+    <string name="alarm_brightness_level">Kirkkaus</string>
+    <string name="alarm_time_to_alarm">Aikaa herätykseen</string>
+    <string name="alarm_close_light">Sulje napauttamalla</string>
+
+    <string name="info_link_rate">Arvostele sovellus</string>
+    <string name="info_link_more">Lisää sovelluksia</string>
+    <string name="info_version">Versio: %1$s</string>
+    <string name="info_copyright">Copyright &#169; Arde Apps</string>
+    <string name="info_close">Sulje</string>
+    <string name="info_title">Herätysvalo - tietoja</string>
+</resources>
