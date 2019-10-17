@@ -7,9 +7,10 @@ import android.graphics.Shader;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +19,8 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -248,63 +251,78 @@ public class MainActivity extends Activity {
             }
         });
 
-
-        // COLOR OF LIGHT
-        colorPicker.post(new Runnable() {
+        colorPreview.post(new Runnable() {
             @Override
             public void run() {
-                LinearGradient colorGradient = new LinearGradient(0.f, 0.f, colorPicker.getMeasuredWidth() - colorPicker.getThumb().getIntrinsicWidth(), 0.f,
-                        new int[]{0xFF000000, 0xFF0000FF, 0xFF00FF00, 0xFF00FFFF,
-                                0xFFFF0000, 0xFFFF00FF, 0xFFFFFF00, 0xFFFFFFFF},
-                        null, Shader.TileMode.CLAMP
-                );
-                ShapeDrawable shape = new ShapeDrawable(new RectShape());
-                shape.getPaint().setShader(colorGradient);
-                colorPicker.setProgressDrawable(shape);
-                colorPicker.setMax(256 * 7 - 1);
-                int progress = PrefRes.getInt(ALARM_COLOR_PROGRESS);
-                colorPicker.setProgress(progress);
-            }
-        });
+                int previewWidth = colorPreview.getWidth();
+                ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) colorPreview.getLayoutParams();
+                params.height = previewWidth / 2;
+                colorPreview.setLayoutParams(params);
 
-        colorPicker.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
-                    PrefRes.putInt(ALARM_COLOR_PROGRESS, progress);
-                }
-                int selectedColor = AppRes.getColorFromProgress(progress);
+                colorPicker.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        if (fromUser) {
+                            PrefRes.putInt(ALARM_COLOR_PROGRESS, progress);
+                        }
+                        int selectedColor = AppRes.getColorFromProgress(progress);
 
-                GradientDrawable gd = new GradientDrawable();
+                        GradientDrawable gd = new GradientDrawable();
 
-                // Set the color array to draw gradient
-                gd.setColors(new int[]{
-                        selectedColor,
-                        selectedColor,
-                        getColor(R.color.color_main)
+                        int color;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            color = getColor(R.color.color_main);
+                        } else {
+                            color = getResources().getColor(R.color.color_main);
+                        }
+                        // Set the color array to draw gradient
+                        gd.setColors(new int[]{
+                                selectedColor,
+                                selectedColor,
+                                color
+                        });
+
+                        // Set the GradientDrawable gradient type linear gradient
+                        gd.setGradientType(GradientDrawable.RADIAL_GRADIENT);
+
+                        // Set GradientDrawable shape is a rectangle
+                        gd.setShape(GradientDrawable.RECTANGLE);
+                        gd.setGradientRadius(400);
+                        gd.setGradientCenter(0.5f, 1);
+                        gd.setUseLevel(true);
+                        gd.setLevel(10000);
+
+                        colorPreview.setBackground(gd);
+                        colorPreview.setVisibility(View.VISIBLE);
+                        setMaxLightPickerColor(PrefRes.getInt(SELECTED_MAX_LIGHT_PERCENT));
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                    }
                 });
 
-                // Set the GradientDrawable gradient type linear gradient
-                gd.setGradientType(GradientDrawable.RADIAL_GRADIENT);
-
-                // Set GradientDrawable shape is a rectangle
-                gd.setShape(GradientDrawable.RECTANGLE);
-                gd.setGradientRadius(400);
-                gd.setGradientCenter(0.5f, 1);
-                gd.setUseLevel(true);
-                gd.setLevel(10000);
-
-                colorPreview.setBackground(gd);
-
-                setMaxLightPickerColor(PrefRes.getInt(SELECTED_MAX_LIGHT_PERCENT));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+                // COLOR OF LIGHT
+                colorPicker.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        LinearGradient colorGradient = new LinearGradient(0.f, 0.f, colorPicker.getMeasuredWidth() - colorPicker.getThumb().getIntrinsicWidth(), 0.f,
+                                new int[]{0xFF000000, 0xFF0000FF, 0xFF00FF00, 0xFF00FFFF,
+                                        0xFFFF0000, 0xFFFF00FF, 0xFFFFFF00, 0xFFFFFFFF},
+                                null, Shader.TileMode.CLAMP
+                        );
+                        ShapeDrawable shape = new ShapeDrawable(new RectShape());
+                        shape.getPaint().setShader(colorGradient);
+                        colorPicker.setProgressDrawable(shape);
+                        colorPicker.setMax(256 * 7 - 1);
+                        int progress = PrefRes.getInt(ALARM_COLOR_PROGRESS);
+                        colorPicker.setProgress(progress);
+                    }
+                });
             }
         });
 

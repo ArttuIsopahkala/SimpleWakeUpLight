@@ -18,6 +18,7 @@ public class AlarmService {
     public static void setNextWakeUp() {
         Context context = AppRes.getContext();
         Intent intent = new Intent(context, AlarmReceiver.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent wakeUpIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         if (am != null) {
@@ -34,6 +35,7 @@ public class AlarmService {
             if(wakeUpTime > System.currentTimeMillis()) {
                 am.set(AlarmManager.RTC_WAKEUP, wakeUpTime, wakeUpIntent);
             }
+
             AppRes.updateWidget();
         }
     }

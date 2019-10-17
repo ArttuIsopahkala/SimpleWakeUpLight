@@ -36,6 +36,7 @@ public class AlarmActivity extends Activity {
     CountDownTimer brightnessTimer = null;
     ShutDownTask shutDownTask = new ShutDownTask();
     Timer shutDownTimer = new Timer();
+    PowerManager.WakeLock wakeLock;
 
     float brightness = 0;
     float brightnessToAdd = 0;
@@ -99,6 +100,7 @@ public class AlarmActivity extends Activity {
         });
 
         brightness = 0;
+        changeScreenBrightness(0);
 
         brightnessTimer = new CountDownTimer(delay, period) {
             public void onTick(long millisUntilFinished) {
@@ -145,7 +147,13 @@ public class AlarmActivity extends Activity {
     private void userPowerManagerWakeup() {
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         if(pm != null) {
-            PowerManager.WakeLock wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "sunrisescreen:wakelock");
+            if (wakeLock != null && wakeLock.isHeld()) {
+                wakeLock.release();
+            }
+
+            wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK |
+                    PowerManager.ACQUIRE_CAUSES_WAKEUP |
+                    PowerManager.ON_AFTER_RELEASE, "sunrisescreen:wakelock");
             wakeLock.acquire(TimeUnit.SECONDS.toMillis(5));
         }
     }
@@ -154,6 +162,11 @@ public class AlarmActivity extends Activity {
     void cancelTimer() {
         if(brightnessTimer != null)
             brightnessTimer.cancel();
+
+        if(wakeLock != null && wakeLock.isHeld()) {
+            wakeLock.release();
+            wakeLock = null;
+        }
     }
 
     private void changeScreenBrightness(final float screenBrightnessValue) {

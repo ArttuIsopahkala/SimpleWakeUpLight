@@ -3,10 +3,12 @@ package com.ardeapps.simplewakeuplight;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -108,11 +110,19 @@ public class ScheduleActivity extends Activity {
         if(selected) {
             button.setTypeface(button.getTypeface(), Typeface.BOLD);
             button.setBackground(ContextCompat.getDrawable(this, R.drawable.weekday_button));
-            button.setTextColor(ContextCompat.getColor(this, R.color.color_active));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                button.setTextColor(getColor(R.color.color_active));
+            } else {
+                button.setTextColor(this.getResources().getColor(R.color.color_active));
+            }
         } else {
             button.setTypeface(button.getTypeface(), Typeface.NORMAL);
             button.setBackgroundColor(Color.TRANSPARENT);
-            button.setTextColor(ContextCompat.getColor(this, R.color.color_text_light_secondary));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                button.setTextColor(getColor(R.color.color_text_light_secondary));
+            } else {
+                button.setTextColor(this.getResources().getColor(R.color.color_text_light_secondary));
+            }
         }
     }
 

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:rsb="http://schemas.android.com/apk/res-auto"
     android:background="@color/color_main"
     tools:context=".MainActivity">
     <RelativeLayout
@@ -203,10 +202,11 @@
     <View
         android:id="@+id/colorPreview"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="100dp"
         android:layout_above="@+id/menuButtons"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/circle"/>
+        android:background="@drawable/circle"
+        android:visibility="invisible"/>
 
     <SeekBar
         android:id="@+id/colorPicker"

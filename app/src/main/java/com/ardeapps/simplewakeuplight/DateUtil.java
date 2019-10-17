@@ -36,16 +36,29 @@ public class DateUtil {
         for(String weekday : PrefRes.getStringSet(SELECTED_WEEKDAYS)) {
             selectedDays.add(Integer.parseInt(weekday));
         }
-        Calendar nextAlarm = Calendar.getInstance();
-        nextAlarm.set(Calendar.HOUR_OF_DAY, 0);
-        nextAlarm.set(Calendar.MINUTE, 0);
-        nextAlarm.set(Calendar.SECOND, 0);
-        nextAlarm.set(Calendar.MILLISECOND, 0);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        long millis = PrefRes.getLong(SELECTED_MANUAL_MILLIS);
+        calendar.add(Calendar.MILLISECOND, (int) millis);
+        long delay = TimeUnit.MINUTES.toMillis(PrefRes.getInt(PrefRes.SELECTED_MINUTES));
+        long lightWakeUpTime = calendar.getTimeInMillis() - delay;
+
         // Alarm once or repeat
         if(!selectedDays.isEmpty()) {
             // Convert day of week to be correct for this app
-            int dayOfWeek = nextAlarm.get(Calendar.DAY_OF_WEEK); // sunday = 1
-
+            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK); // sunday = 1
+            // Add to next week if only today is selected and wake up time is in the past
+            if(selectedDays.contains(dayOfWeek) && lightWakeUpTime < System.currentTimeMillis()) {
+                if(selectedDays.size() == 1) {
+                    calendar.add(Calendar.DAY_OF_MONTH, 7);
+                } else {
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
+                }
+            }
             // Find next selected day
             while (!selectedDays.contains(dayOfWeek)) {
                 if(dayOfWeek == 7) {
@@ -53,20 +66,16 @@ public class DateUtil {
                 } else  {
                     dayOfWeek++;
                 }
-                nextAlarm.add(Calendar.DAY_OF_MONTH, 1);
+                calendar.add(Calendar.DAY_OF_MONTH, 1);
+            }
+        } else {
+            // Set for tomorrow if time with delay is in the past
+            if(lightWakeUpTime < System.currentTimeMillis()) {
+                calendar.add(Calendar.DAY_OF_MONTH, 1);
             }
         }
 
-        long millis = PrefRes.getLong(SELECTED_MANUAL_MILLIS);
-        nextAlarm.add(Calendar.MILLISECOND, (int) millis);
-
-        // Set for tomorrow if time with delay is in the past
-        long delay = TimeUnit.MINUTES.toMillis(PrefRes.getInt(PrefRes.SELECTED_MINUTES));
-        if((nextAlarm.getTimeInMillis() - delay) < System.currentTimeMillis()) {
-            nextAlarm.add(Calendar.DAY_OF_MONTH, 1);
-        }
-
-        return nextAlarm.getTimeInMillis();
+        return calendar.getTimeInMillis();
     }
 
     public static long getStartOfWeekInMillis() {
