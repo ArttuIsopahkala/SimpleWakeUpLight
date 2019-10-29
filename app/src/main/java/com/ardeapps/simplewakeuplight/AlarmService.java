@@ -23,7 +23,7 @@ public class AlarmService {
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         if (am != null) {
             long nextAlarm;
-            if(PrefRes.getBoolean(AUTOMATIC_SCHEDULE)) {
+            if(PrefRes.getBoolean(AUTOMATIC_SCHEDULE) && am.getNextAlarmClock() != null) {
                 nextAlarm = am.getNextAlarmClock().getTriggerTime();
             } else {
                 nextAlarm = DateUtil.getNextManualWakeup();
